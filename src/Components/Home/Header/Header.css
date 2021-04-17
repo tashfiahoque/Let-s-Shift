@@ -1,0 +1,23 @@
+header {
+    background: linear-gradient(175deg, #F6D7D8, #F1E1E0);
+    min-height: 710px;
+}
+.banner-title{
+    color: #105746;
+}
+.banner-p{
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+}
+
+@media(max-width: 990px) {
+    header {
+        min-height: 700px;
+    }
+}
+@media(max-width: 770px) {
+    header {
+        min-height: 630px;
+    }
+}

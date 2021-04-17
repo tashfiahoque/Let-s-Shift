@@ -1,0 +1,16 @@
+.card{
+    margin: 0px 50px;
+    background-color: #BED7F7;
+}
+.card img{
+    padding: 10px;
+}
+.card-image{
+    overflow: hidden;
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+.card-image:hover img{
+    transform: scale(1.5);
+}

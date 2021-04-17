@@ -1,0 +1,23 @@
+.delete-button{
+    border: none;
+    outline: none;
+    background: none;
+}
+.list-header{
+    background: #F5F6FA;
+}
+.list-header {
+    background: #F5F6FA;
+    font-size: 10px;
+}
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    .list-header {
+        font-size: 10px;
+        font-weight: 300;
+    }
+    .font-change h5{
+        font-size: 10px;
+        font-weight: 300;
+    }
+}
