@@ -18,7 +18,7 @@ const About = () => {
                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dignissim mauris in lobortis pharetque vel semper iaculis, sollicitudin et augue.</p>
                         <p>Top quality professional crews and professional team members ensure safely movement of your valuable products. So, It's the perfect time to say goodbye to the costly moving service and truck rental.</p>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 img-hover">
                         <img src={movers} alt="movers" className="w-100" />
                     </div>
                 </div>
