@@ -29,7 +29,16 @@
  .mainNav__hover {
     position: relative;
   }
-  
+  .logo, .img-hover {
+    transition: transform 1s ease-in-out;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  .logo:hover, .img-hover:hover {
+    box-shadow: 0 .5rem 0.5rem rgba(0, 0, 0, .15);
+    border-radius: 10px;
+    transform: rotateY(30deg) translateY(10px) scaleX(1.1);
+  }
   .mainNav__hover:after {
     bottom: 0;
     content: "";
@@ -41,7 +50,6 @@
     transition: width 1s ease 0s, left 1s ease 0s;
     width: 0;
   }
-  
   .mainNav__hover:hover:after {
     width: 100%;
     left: 0;

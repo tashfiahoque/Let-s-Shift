@@ -39,9 +39,11 @@ const Navbar = () => {
                             <li className="nav-item mainNav__hover">
                                 <Link className="nav-link" to="/home" >Home</Link>
                             </li>
-                            <li className="nav-item  mainNav__hover">
-                                <a className="nav-link" href="#services">Services</a>
-                            </li>
+                            {!checkAdmin &&
+                                <li className="nav-item  mainNav__hover">
+                                    <a className="nav-link" href="#services">Services</a>
+                                </li>
+                            }
                             <li className="nav-item mainNav__hover">
                                 <a className="nav-link" href="#reviews">Reviews</a>
                             </li>
@@ -55,10 +57,10 @@ const Navbar = () => {
                             }
                             {user.name && <h6 style={{ color: '#D3A21F' }}>{user.name}&nbsp;&nbsp;</h6>}
                             {user.name || user.email
-                                ? <li className="nav-item active onClick={signOut}">
+                                ? <li className="nav-item active mainNav__hover">
                                     <Link className="nav-link" to="/" onClick={handleLogOut}>Log out</Link>
                                 </li>
-                                : <li className="nav-item active">
+                                : <li className="nav-item active mainNav__hover">
                                     <Link className="nav-link" to="/login">Login</Link>
                                 </li>}
                         </ul>
