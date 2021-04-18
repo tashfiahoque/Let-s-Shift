@@ -50,6 +50,7 @@ const OrderList = () => {
                                 user && <h3 className="header-title">Welcome admin, {user.name}</h3>
                             }
                         </div>
+                        <h5 className="text-center text-success" id="update">.</h5>
                         {
                             allOrders.length === 0 &&
                             <Spinner />
