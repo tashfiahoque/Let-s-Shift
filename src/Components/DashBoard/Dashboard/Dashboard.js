@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './Dashboard.css';
-import Admin from '../Admin/Admin';
 import Sidebar from '../Sidebar/Sidebar';
 import Dashboard1 from './Dashboard1';
 import { UserContext } from '../../../App';
@@ -8,7 +7,8 @@ import { UserContext } from '../../../App';
 
 
 const Dashboard = () => {
-    const [user, setUser] = useContext(UserContext)
+    const [user] = useContext(UserContext)
+
     return (
         <main className="dashboard">
             <div className="container">

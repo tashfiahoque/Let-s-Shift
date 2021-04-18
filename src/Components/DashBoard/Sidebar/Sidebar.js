@@ -11,7 +11,6 @@ import { faLuggageCart } from '@fortawesome/free-solid-svg-icons';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { IdContext, UserContext } from '../../../App';
-import Spinner from '../../Shared/Spinner/Spinner';
 import logo from '../../../Images/logo.jpg';
 
 
@@ -30,6 +29,7 @@ const Sidebar = () => {
             .then(res => res.json())
             .then(data => setIsAdmin(data))
     }, [])
+
     const handleLogOut = () => {
         setUser({});
     }

@@ -4,7 +4,7 @@ import processData from './fakeData.js';
 import ProcessCard from '../ProcessCard/ProcessCard';
 
 const Process = () => {
-    console.log(processData)
+
     return (
         <section id="process" className="mt-5 d-flex justify-content-center">
             <div className="container">

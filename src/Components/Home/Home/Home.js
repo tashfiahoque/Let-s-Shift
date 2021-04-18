@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../../App';
 import Footer from '../../Shared/Footer/Footer';
 import About from '../About/About';
 import Contact from '../Contact/Contact';
@@ -9,12 +10,21 @@ import ShowReview from '../ShowReview/ShowReview';
 import './Home.css';
 
 const Home = () => {
+    const [user] = useContext(UserContext);
+    const [checkUser, setCheckUser] = useState(null);
+    useEffect(() => {
+        fetch(`https://sheltered-beyond-36382.herokuapp.com/checkUser/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setCheckUser(data);
+            })
+    }, [user.email])
     return (
         <>
             <Header />
             <About />
             <Process />
-            <Services />
+            {!checkUser && <Services />}
             <ShowReview />
             <Contact />
             <Footer />

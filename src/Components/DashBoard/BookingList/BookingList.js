@@ -7,7 +7,7 @@ import './BookingList.css';
 const BookingList = () => {
 
     const [myBookings, setMyBookings] = useState([]);
-    const [user, setUser] = useContext(UserContext)
+    const [user] = useContext(UserContext)
 
     // loading user's orders
     useEffect(() => {

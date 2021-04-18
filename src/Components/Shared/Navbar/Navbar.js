@@ -1,6 +1,6 @@
 // <a href='https://www.freepik.com/vectors/house'>House vector created by freepik - www.freepik.com</a>
 // <a href='https://www.freepik.com/vectors/people'>People vector created by pch.vector - www.freepik.com</a>
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
@@ -12,9 +12,18 @@ const Navbar = () => {
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
     const [user, setuser] = useContext(UserContext);
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+    const [checkAdmin, setCheckAdmin] = useState(null)
     const handleLogOut = () => {
         setuser({});
     }
+    useEffect(() => {
+        fetch(`https://sheltered-beyond-36382.herokuapp.com/checkAdmin/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setCheckAdmin(data);
+            })
+    }, [user.email])
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light" id="nav">
@@ -39,9 +48,11 @@ const Navbar = () => {
                             <li className="nav-item mainNav__hover">
                                 <a className="nav-link" href="#contact">Contact Us</a>
                             </li>
-                            <li className="nav-item mainNav__hover">
-                                <Link className="nav-link" to="/addServices">Admin</Link>
-                            </li>
+                            {checkAdmin &&
+                                <li className="nav-item mainNav__hover">
+                                    <Link className="nav-link" to="/addServices">Admin</Link>
+                                </li>
+                            }
                             {user.name && <h6 style={{ color: '#D3A21F' }}>{user.name}&nbsp;&nbsp;</h6>}
                             {user.name || user.email
                                 ? <li className="nav-item active onClick={signOut}">
