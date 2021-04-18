@@ -10,6 +10,22 @@
     background: #F5F6FA;
     font-size: 10px;
 }
+.manage-services-title h1{
+    font-size: 18px;
+    color: #F4904B;
+}
+.manage-services-table th{
+    font-size: 16px;
+    color: #6D7492;
+    font-weight: 500;
+}
+.manage-services-table td{
+    font-size: 14px;
+    color: #105746;
+    font-weight: 400;
+}
+
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     .list-header {

@@ -4,6 +4,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import './Services.css';
 import img1 from '../../../Images/logo.jpg';
 import ServiceCard from '../ServiceCard/ServiceCard';
+import Spinner from '../../Shared/Spinner/Spinner';
 
 
 const responsive = {
@@ -29,24 +30,25 @@ const items = [
 const Services = () => {
     const [services, setServices] = useState([])
     useEffect(() => {
-        fetch('http://localhost:4000/services')
+        fetch('https://sheltered-beyond-36382.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
     return (
         <section id="services" className="services mt-5">
+            <div className="text-center pb-5">
+                <h2>Our <b style={{ color: '#105746' }}>Services</b></h2>
+            </div>
             <div className="container">
-                <AliceCarousel
-                    autoPlay
-                    disableButtonsControls
-                    infinite
-                    items={services.map((service) => <ServiceCard key={service.title} service={service} />)}
-                    responsive={responsive}
-                />
-                {/* <div className="row row-cols-1 row-cols-md-3 g-4">
-                    {services.map((service) => <ServiceCard key={service._id} service={service} />)}
-                </div> */}
-
+                {!services.length ? <Spinner />
+                    : <AliceCarousel
+                        autoPlay
+                        disableButtonsControls
+                        infinite
+                        items={services.map((service) => <ServiceCard key={service.title} service={service} />)}
+                        responsive={responsive}
+                    />
+                }
             </div>
         </section>
     );

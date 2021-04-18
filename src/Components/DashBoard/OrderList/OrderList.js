@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../../App';
+import Spinner from '../../Shared/Spinner/Spinner';
 import Sidebar from '../Sidebar/Sidebar';
 import './OrderList.css';
 
 const OrderList = () => {
 
     const [allOrders, setAllOrders] = useState([]);
-    const statuses = ['Pending', 'Processing', 'Done'];
+    const statuses = ['Pending', 'On-going', 'Done'];
+    const [user] = useContext(UserContext)
 
     // loading all orders
     useEffect(() => {
-        fetch('http://localhost:4000/allBookings')
+        fetch('https://sheltered-beyond-36382.herokuapp.com/allBookings')
             .then(res => res.json())
             .then(data => setAllOrders(data))
     }, [])
@@ -20,7 +23,7 @@ const OrderList = () => {
         document.getElementById('update').innerText = 'Updating Changes';
 
         // updating status
-        fetch(`http://localhost:4000/edit/${id}`, {
+        fetch(`https://sheltered-beyond-36382.herokuapp.com/edit/${id}`, {
             method: 'PATCH',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(modifiedOrder)
@@ -34,20 +37,24 @@ const OrderList = () => {
     }
 
     return (
-        <section id="allOrder" className="p-4">
+        <section id="allOrder" className="p-4 all-order">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-4 col-12">
                         <Sidebar />
                     </div>
-                    <div className="col-md-8">
-                        <h3>All Orders From Customers</h3>
-                        <h5 className="text-center text-success" id="update">.</h5>
+                    <div className="col-md-8 col-12">
+                        <div className="d-flex justify-content-between mt-5">
+                            <h1 className="header-title">All Orders</h1>
+                            {
+                                user && <h3 className="header-title">Welcome admin, {user.name}</h3>
+                            }
+                        </div>
                         {
                             allOrders.length === 0 &&
-                            <h4 className="my-4 text-center text-danger">Loading Orders....</h4>
+                            <Spinner />
                         }
-                        <table className="table bg-white mt-4 text-center rounded table-borderless">
+                        <table className="table bg-white mt-4 text-center rounded table-borderless order-table">
                             <thead className="bg-light">
                                 <tr>
                                     <th scope="col">Name</th>
@@ -66,7 +73,7 @@ const OrderList = () => {
                                             <td>{order.selectedService.serviceTitle}</td>
                                             <td>{order.formData.paymentType}</td>
                                             <td>
-                                                <select className="form-control" onChange={(e) => statusChange(order._id, e)} name="status">
+                                                <select className="form-control text-danger" onChange={(e) => statusChange(order._id, e)} name="status">
                                                     {
                                                         statuses.map(option =>
                                                             <option key={option} value={option} selected={option === order.status}>{option}</option>)

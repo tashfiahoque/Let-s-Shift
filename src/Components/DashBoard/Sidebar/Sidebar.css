@@ -1,23 +1,35 @@
 .sidebar{
     height: 900px;
+    background: #273E73;
 }
 .sidebar-title{
     padding: 50px 25px 25px 89px;
-    color: #475C57;
+    color: #D3A21F;
     font-weight: 700;
+    font-size: 25px;
 }
 a.nav-link{
-    color: #475C57 !important;
+    color: #D3A21F !important;
 }
 .sidebar-nav{
     padding-left: 89px;
+}
+.sidebar img{
+    width: 70px;
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     .sidebar {
-        width: 315px;
-        height: 347px;
+        width: 300px;
+        height: 378px;
         border-radius: 5px;
+    }
+    .sidebar-title{
+        font-weight: 500;
+        font-size: 20px;
+    }
+    .sidebar img{
+        width: 50px;
     }
 }

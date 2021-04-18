@@ -10,10 +10,10 @@ const BookService = () => {
     const { id } = useParams();
     const [selectedService, setSelectedService] = useContext(IdContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [user, setUser] = useContext(UserContext);
+    const [user] = useContext(UserContext);
     const [bookingData, setBookingData] = useState(null)
     useEffect(() => {
-        fetch(`http://localhost:4000/select/${id}`)
+        fetch(`https://sheltered-beyond-36382.herokuapp.com/select/${id}`)
             .then(res => res.json())
             .then(data => {
                 setSelectedService(data);
@@ -32,7 +32,7 @@ const BookService = () => {
             paymentId,
             bookTime: new Date()
         };
-        fetch('http://localhost:4000/addBooking', {
+        fetch('https://sheltered-beyond-36382.herokuapp.com/addBooking', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,16 +48,18 @@ const BookService = () => {
 
     }
     return (
-        <div className="make-admin">
+        <div className="service-booking">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4 col">
+                    <div className="col-md-4 col-12">
                         <Sidebar />
                     </div>
-                    <div className="col-md-8 col">
-                        <div className="d-flex justify-content-between addservice-header mt-5">
-                            <h1>Service Booking Information</h1>
-                            <h3>Flex item 2</h3>
+                    <div className="col-md-8 col-12 book-service-header">
+                        <div className="d-flex justify-content-between mt-5">
+                            <h1 className="header-title">Service Booking Information</h1>
+                            {
+                                user && <h3 className="header-title">Welcome {user.name}</h3>
+                            }
                         </div>
                         <div className="book-service-details" style={{ display: bookingData ? 'none' : 'block' }}>
                             <form id="book" className="p-5" onSubmit={handleSubmit(onSubmit)}>
@@ -91,8 +93,8 @@ const BookService = () => {
                                 </div>
 
                                 <div className="col form-group text-right">
-                                    <h4>Your service will be charged {price}</h4>
-                                    <button type="submit" className="btn">Send</button>
+                                    <h4>Your service will be charged <span style={{ color: "red" }}> {price}</span></h4>
+                                    <button type="submit" className="btn all-btn mt-3">Send</button>
                                 </div>
                             </form>
                         </div>

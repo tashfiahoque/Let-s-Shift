@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Home from './Components/Home/Home/Home';
 import OrderList from './Components/DashBoard/OrderList/OrderList';
-import AddServices from './Components/DashBoard/AddServices/AddServices';
 import ManageServices from './Components/DashBoard/ManageServices/ManageServices';
 import MakeAdmin from './Components/DashBoard/MakeAdmin/MakeAdmin';
 import Dashboard from './Components/DashBoard/Dashboard/Dashboard';
@@ -16,6 +15,7 @@ import BookingList from './Components/DashBoard/BookingList/BookingList';
 import Review from './Components/DashBoard/Review/Review';
 import Login from './Components/Home/Login/Login';
 import PrivateRoute from './Components/Home/Login/PrivateRoute';
+import ScrollToTop from "react-scroll-to-top";
 
 export const IdContext = createContext();
 export const UserContext = createContext();
@@ -32,6 +32,7 @@ function App() {
   const [selectedService, setSelectedService] = useState([]);
   return (
     <>
+      <ScrollToTop smooth color="#FBC425" />
       <UserContext.Provider value={[user, setUser]}>
         <IdContext.Provider value={[selectedService, setSelectedService]}>
           <Router>
@@ -42,14 +43,11 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              <PrivateRoute path="/admin">
+              <PrivateRoute path="/addServices">
                 <Dashboard />
               </PrivateRoute>
               <Route path="/orderList">
                 <OrderList />
-              </Route>
-              <Route path="/addServices">
-                <AddServices />
               </Route>
               <Route path="/manageServices">
                 <ManageServices />

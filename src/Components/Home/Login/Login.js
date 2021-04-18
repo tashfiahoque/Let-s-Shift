@@ -43,7 +43,6 @@ const Login = () => {
                 <input type="submit" value="Continue with Google" id="signin_button" onClick={handleGoogleSignIn} />
                 <h4 className="text-danger mt-5">{user.message}</h4>
             </div>
-
         </>
     );
 };

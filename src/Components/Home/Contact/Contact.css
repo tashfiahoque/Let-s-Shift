@@ -1,0 +1,15 @@
+.section-header h1{
+    font-size: 30px;
+    line-height: 24px;
+    font-weight: 600;
+}
+.section-header b{
+    color: #105746;
+}
+
+
+@media(max-width: 770px) {
+        .section-header h1 {
+            font-size: 22px;
+        }
+}    

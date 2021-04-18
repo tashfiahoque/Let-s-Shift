@@ -18,7 +18,7 @@ const Dashboard1 = () => {
             imageURL: imageURL
         };
 
-        const url = `http://localhost:4000/addServices`;
+        const url = `https://sheltered-beyond-36382.herokuapp.com/addServices`;
 
         fetch(url, {
             method: 'POST',
@@ -35,7 +35,6 @@ const Dashboard1 = () => {
     }
 
     const handleImageUpload = event => {
-        console.log(event.target.files[0])
         const imageData = new FormData();
         imageData.set('key', '1296a13ce55bb34081ea80a01769e9d4');
         imageData.append('image', event.target.files[0]);
@@ -50,19 +49,19 @@ const Dashboard1 = () => {
             });
     }
     return (
-        <div>
+        <section className="add-service-data">
             <div className="container">
                 <div className="row">
                     <div className="col-md-7 mt-5">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="row">
-                                <div className="col">
+                                <div className="col-12 mb-3">
                                     <label htmlFor="title">Service Title</label>
                                     <input id="title" {...register('title', { required: true, maxLength: 50 })} placeholder="Enter Service Title" className="form-control" />
                                     {errors.title && errors.title.type === "required" && <span>This is required</span>}
                                     {errors.title && errors.title.type === "maxLength" && <span>Max length exceeded</span>}
                                 </div>
-                                <div className="col">
+                                <div className="col-12 mb-3">
                                     <label htmlFor="description">Service Description</label>
                                     <input id="description" {...register('description', { required: true, maxLength: 200 })} placeholder="Enter Service Description" className="form-control" />
                                     {errors.description && errors.description.type === "required" && <span>This is required</span>}
@@ -70,12 +69,12 @@ const Dashboard1 = () => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col">
+                                <div className="col-12 mb-3">
                                     <label htmlFor="price">Service Price</label>
                                     <input id="price" {...register('price', { required: true })} placeholder="Enter Service Price" className="form-control" />
                                     {errors.price && errors.price.type === "required" && <span>This is required</span>}
                                 </div>
-                                <div className="col">
+                                <div className="col-12 mb-3">
                                     <label htmlFor="file">
                                         <span>
                                             {" "}
@@ -88,16 +87,14 @@ const Dashboard1 = () => {
                                     {errors.file && errors.file.type === "required" && <span>This is required</span>}
                                 </div>
                             </div>
-                            <div className="col-12 d-flex justify-content-center save-button">
-                                <input type="submit" />
+                            <div className="col-12 d-flex justify-content-center">
+                                <input type="submit" className="btn all-btn" />
                             </div>
                         </form>
                     </div>
                 </div>
-
             </div>
-
-        </div>
+        </section>
     );
 };
 

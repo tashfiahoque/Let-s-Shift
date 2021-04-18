@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
 body{
     margin:0;
     padding:0;
+    font-family: 'Poppins', sans-serif;
 }
 div{
     overflow: hidden;
@@ -9,3 +11,13 @@ a{
     text-decoration: none !important;
     color: none !important;
 }
+.all-btn{
+    background-color:#FBC425;
+    font-weight: 600;
+    transition: 1s ease-in-out;
+}
+.all-btn:hover{
+    background-color:#C12C32;
+    color: #fff;
+}
+/* font-family: 'Montserrat', sans-serif; */

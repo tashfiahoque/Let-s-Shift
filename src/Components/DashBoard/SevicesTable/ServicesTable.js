@@ -8,7 +8,7 @@ const ServicesTable = ({ manageServices }) => {
     const history = useHistory();
 
     const deleteItem = id => {
-        fetch(`http://localhost:4000/deleteService/${id}`, {
+        fetch(`https://sheltered-beyond-36382.herokuapp.com/deleteService/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -21,10 +21,10 @@ const ServicesTable = ({ manageServices }) => {
     }
     return (
         <>
-            <div className="manage-services-title">
+            <div className="manage-services-title p-3">
                 <h1>Manage Services</h1>
             </div>
-            <table className="table">
+            <table className="table bg-white mt-4 text-center rounded table-borderless manage-services-table">
                 <thead className="list-header">
                     <tr>
                         <th scope="col">Service Title</th>
@@ -36,12 +36,12 @@ const ServicesTable = ({ manageServices }) => {
                 <tbody>
                     {
                         manageServices.map(item => <tr key={item._id} className="font-change">
-                            <th><h5>{item.serviceTitle}</h5></th>
-                            <td><h5>{item.serviceDescription}</h5></td>
-                            <td><h5>{item.price}</h5></td>
+                            <td>{item.serviceTitle}</td>
+                            <td>{item.serviceDescription}</td>
+                            <td>{item.price}</td>
                             <td>
                                 <button onClick={() => deleteItem(item._id)} className="delete-button">
-                                    <FontAwesomeIcon icon={faTrashAlt} color="red" size="1x" /></button></td>
+                                    <FontAwesomeIcon icon={faTrashAlt} color="red" size="2x" /></button></td>
                         </tr>)
                     }
                 </tbody>

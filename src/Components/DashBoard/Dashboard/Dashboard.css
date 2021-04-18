@@ -1,8 +1,11 @@
-.conditional-render{
-    background: #6D7492;
-}
-
 .addService-header{
     color: #475C57;
     font-weight: 700;
+}
+.dashboard, .all-order, .make-admin{
+    background-color: #BED7F7;
+}
+.add-service-data label{
+color:#6D7492;
+padding-bottom: 20px;
 }

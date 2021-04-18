@@ -16,11 +16,11 @@ const Dashboard = () => {
                     <div className="col-md-4">
                         <Sidebar />
                     </div>
-                    <div className="col-md-8 conditional-render">
+                    <div className="col-md-8">
                         <div className="d-flex justify-content-between addservice-header mt-5">
-                            <h1>Add Service</h1>
+                            <h1 className="header-title"> Add Service</h1>
                             {
-                                user && <h3>Welcome {user.name}</h3>
+                                user && <h3 className="header-title">Welcome admin, {user.name}</h3>
                             }
 
                         </div>

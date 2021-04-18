@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../../../App';
 import Sidebar from '../Sidebar/Sidebar';
 import './MakeAdmin.css';
 
 const MakeAdmin = () => {
     const [info, setInfo] = useState({});
+    const [user] = useContext(UserContext);
 
     const handleBlur = e => {
         const newInfo = { ...info };
@@ -14,8 +16,7 @@ const MakeAdmin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-
-        fetch('http://localhost:4000/makeAdmin', {
+        fetch('https://sheltered-beyond-36382.herokuapp.com/makeAdmin', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(info)
@@ -31,16 +32,18 @@ const MakeAdmin = () => {
             })
     }
     return (
-        <div className="make-admin">
+        <section className="make-admin">
             <div className="container">
                 <div className="row">
                     <div className="col-md-4 col">
                         <Sidebar />
                     </div>
                     <div className="col-md-8 col p-4 pr-5">
-                        <div className="d-flex justify-content-between addservice-header mt-5">
-                            <h1>Add Service</h1>
-                            <h3>Flex item 2</h3>
+                        <div className="d-flex justify-content-between mt-5">
+                            <h1 className="header-title">My Chosen Services</h1>
+                            {
+                                user && <h3 className="header-title">Welcome admin, {user.name}</h3>
+                            }
                         </div>
                         <div>
                             <form id="newAdminForm" onSubmit={handleSubmit}>
@@ -52,13 +55,13 @@ const MakeAdmin = () => {
                                     <label htmlFor="exampleInputEmail1">Email address</label>
                                     <input onBlur={handleBlur} type="email" name="email" placeholder="Admin Email" className="form-control my-3" required />
                                 </div>
-                                <button className="btn btn-dark d-block mt-4 px-4">Make Admin</button>
+                                <button className="btn all-btn d-block mt-4 px-4">Make Admin</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
