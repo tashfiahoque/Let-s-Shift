@@ -14,3 +14,4 @@ Client side is deployed using firebase and server side deployed on heroku.
 
 
 Hosting URL: https://react-auth-64fa7.web.app
+
